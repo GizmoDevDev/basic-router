@@ -1,11 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
 import ViteReactPage from "./components/FixedRoutes/ViteReactPage/ViteReactPage";
 import VitePage from "./components/FixedRoutes/VitePage/VitePage";
 import ReactPage from "./components/FixedRoutes/ReactPage/ReactPage";
 import {DynamicRoute} from "./components/DinamicRoute/DynamicRoute";
+import {NotFound} from "./components/NotFound/NotFound";
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
@@ -15,6 +16,8 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <Route path="/vite" element={<VitePage />}/>
         <Route path="/react" element={<ReactPage />}/>
         <Route path="/hello/:name" element={<DynamicRoute />} />
+        <Route path="/404" element={ <NotFound /> } />
+        <Route path="*" element={ <Navigate to="/404" replace />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
